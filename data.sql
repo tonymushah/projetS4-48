@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS programme(
 );
 
 CREATE TABLE IF NOT EXISTS code(
-    idCode primary key,
+    idCode int primary key,
     montant decimal,
     status_ int
 );
@@ -95,14 +95,14 @@ INSERT INTO sakafo VALUES(default, 'poulet sauce, riz', 'aliemnt5.png', 1);
 INSERT INTO sakafo VALUES(default, 'flocon avoine', 'aliemnt6.png', 1);
 INSERT INTO sakafo VALUES(default, 'avoine,yaourt, fruit', 'aliemnt7.png', 1);
 
-INSERT INTO activite(default, 'jogging', 'joogin.png', 0);
-INSERT INTO activite(default, 'corde a sauté', 'joogin.png', 0);
-INSERT INTO activite(default, 'cardio', 'cardio.png', 0);
-INSERT INTO activite(default, 'byciclette', 'byciclette.png', 0);
-INSERT INTO activite(default, 'squats', 'squat.png', 1);
-INSERT INTO activite(default, 'fente', 'fente.png', 1);
-INSERT INTO activite(default, 'pecteauraux', 'pecteauraux.png', 1);
-INSERT INTO activite(default, 'biceps', 'biceps.png', 1);
+INSERT INTO activite VALUES (default, 'jogging', 'joogin.png', 0);
+INSERT INTO activite VALUES (default, 'corde a sauté', 'joogin.png', 0);
+INSERT INTO activite VALUES(default, 'cardio', 'cardio.png', 0);
+INSERT INTO activite VALUES(default, 'byciclette', 'byciclette.png', 0);
+INSERT INTO activite VALUES(default, 'squats', 'squat.png', 1);
+INSERT INTO activite VALUES(default, 'fente', 'fente.png', 1);
+INSERT INTO activite VALUES(default, 'pecteauraux', 'pecteauraux.png', 1);
+INSERT INTO activite VALUES(default, 'biceps', 'biceps.png', 1);
 
 INSERT INTO detailsProgramme VALUES(default, 'regime 7j', 7, 0, 10000);
 INSERT INTO detailsProgramme VALUES(default, 'regime 14j', 14, 0, 20000);
