@@ -149,3 +149,13 @@ CREATE VIEW V_Programme_Sakafo as select idProgramme, s.idSakafo, dtp.idDetails,
     join sakafo as s
         on s.idSakafo = dp_s.idSakafo
 ;
+
+CREATE VIEW V_Programme_Activite as select idProgramme, a.idactivite, dtp.idDetails, a.nom, a.type_ 
+    from programme as p 
+    join detailsProgramme as dtp 
+        on p.idDetails = dtp.idDetails 
+    join relation_dp_activite as dp_a
+        on dp_a.idDetails = dtp.idDetails
+    join activite as a
+        on a.idactivite = dp_a.idactivite
+;

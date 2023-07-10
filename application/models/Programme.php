@@ -6,7 +6,7 @@
             $query = "select * from programme join detailsProgramme on programme.idDetails=detailsProgramme.idDetails where idProgramme=".$idProgramme." ";
             $progDetails = $this->db->query($query);
 
-            return $progDetails;
+            return $progDetails->result_object();
         }
 
         public function get_current_sakafo($idProgramme){
@@ -18,7 +18,7 @@
                 where programme.debut<now() and programme.fin>now() and programme.idProgramme=".$idProgramme." ";
             $table = $this->db->query($query);
 
-            return $table;
+            return $table->result_object();
         }
 
         public function get_current_activite($idProgramme){
@@ -30,7 +30,7 @@
                 where programme.debut<now() and programme.fin>now() and programme.idProgramme=".$idProgramme." ";
             $table = $this->db->query($query);
 
-            return $table;
+            return $table->result_object();
         }
 
         public function modify_program($idProgramme, $dateFin){
@@ -38,4 +38,19 @@
             $this->db->query($query);
             return $query;
         }
+		public function get__sakafo($idProgramme){
+			$query = sprintf("select * from v_programme_sakafo where idprogramme=%d", $idProgramme);
+			return $this->db->query($query)->result_object();
+		}
+		public function get__activite($idProgramme){
+			$query = sprintf("select * from V_Programme_Activite where idProgramme=%d", $idProgramme);
+			return $this->db->query($query)->result_object();
+		}
+		public function get__detail_programm_by_id($id_detail_program){
+			$query = sprintf("select * from detailsProgramme where idDetails=%d", $id_detail_program);
+			$result = $this->db->query($query)->result_object();
+			if(count($result) == 1){
+				return $result[0];
+			}
+		}
     }

@@ -74,7 +74,6 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'pgsql:host=127.0.0.1;port=5432;dbname=abinci',
 	'hostname' => '127.0.0.1',
 	'username' => 'abinci',
 	'password' => 'etu001844',
