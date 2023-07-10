@@ -8,12 +8,12 @@ public function __construct(){
 }
 	public function index()
 	{
-		$this->load->view('login');
+		$this->load->view('frontoffice/login');
 	}
 	public function error_login(){
 		$data['errorl'] = 'Your Account is Invalid';  
 		$data['formdata'] = $this->session->flashdata('error_login');
-		$this->load->view('login',$data);
+		$this->load->view('frontoffice/login',$data);
 	}	
 	public function inscription(){
 		$this->load->view('inscription');
@@ -21,17 +21,12 @@ public function __construct(){
 	public function error_sign(){
 		$data['errors'] = 'use an another email'; 
 		$data['formdata'] = $this->session->flashdata('error_sign');
-		$this->load->view('inscription',$data);
+		$this->load->view('frontoffice/inscription',$data);
 	}
-
-	public function logout(){    
-        $this->session->unset_userdata('iduser');  
-		redirect("index.php/Auth");  
-    }
 
 	public function accueil($id){
 		$data['user'] = $id;		
-		$this->load->view('accueil',$data);
+		$this->load->view('frontoffice/accueil',$data);
 	}
 
 	public function upload_image($nom_image){
@@ -54,7 +49,7 @@ public function __construct(){
 		}else{
 			$user = $this->Login_model->getuserbyemail($email);
 			$_SESSION['iduser'] = $user['iduser'];		
-			redirect('index.php/Auth/accueil/'.$_SESSION['iduser']);
+			redirect('index.php/Auth/accueil/'.$_SESSION['user']);
 		}
 	}
 	public function process_inscription(){
@@ -68,12 +63,43 @@ public function __construct(){
 		$verif = $this->Login_model->verif_email($email);
 		if($verif == null){
 			$iduser = $this->Login_model->insert_person($nom,$email,$mdp,$weight,$taille,$image['file_name']);
-			$this->session->set_userdata('iduser',$iduser);
-			redirect('index.php/Auth/accueil/'.$_SESSION['iduser']);
+			$this->session->set_userdata('user',$iduser);
+			redirect('index.php/Auth/accueil/'.$_SESSION['user']);
 		}else{
 			$this->session->set_flashdata('error_sign',$this->input->post());
 			redirect('index.php/Auth/error_sign');
 		}
 	}
+
+	//admin
+
+	public function login_admin(){
+		$this->load->view('backoffice/login_admin');
+	}
+
+	public function process_login_admin(){
+		$email = $this->input->post('email');
+		$mdp = $this->input->post('password');
+		if($email == "admin@gmail.com" && $mdp == "admin"){		
+			redirect('index.php/Auth/accueil_admin');
+		}else{
+			redirect('index.php/Auth/error_login_admin');
+		}
+	}
+
+	public function accueil_admin(){	
+		$this->load->view('backoffice/accueil_admin');
+	}
+
+	public function error_login_admin(){
+		$data['errorl'] = 'Admin account is incorrect';  
+		$this->load->view('backoffice/login_admin',$data);
+	}	
+
+	public function logout(){    
+        $this->session->unset_userdata('user');  
+		$this->session->sess_destroy();
+		redirect('index.php/Auth');  
+    }
 
 }
