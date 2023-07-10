@@ -138,3 +138,14 @@ INSERT INTO code VALUES(654128796, 20000, 0);
 INSERT INTO code VALUES(412789630, 10000, 0);
 
 -- 
+
+
+CREATE VIEW V_Programme_Sakafo as select idProgramme, s.idSakafo, dtp.idDetails, s.nom, s.type_ 
+    from programme as p 
+    join detailsProgramme as dtp 
+        on p.idDetails = dtp.idDetails 
+    join relation_dp_sakafo as dp_s
+        on dp_s.idDetails = dtp.idDetails
+    join sakafo as s
+        on s.idSakafo = dp_s.idSakafo
+;

@@ -74,11 +74,11 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'pgsql:host=localhost;port=5432;dbname=abinci',
-	'hostname' => 'localhost',
-	'username' => 'postgres',
-	'password' => '227922',
-	'database' => 'projet48',
+	'dsn'	=> 'pgsql:host=127.0.0.1;port=5432;dbname=abinci',
+	'hostname' => '127.0.0.1',
+	'username' => 'abinci',
+	'password' => 'etu001844',
+	'database' => 'abinci',
 	'dbdriver' => 'postgre',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
