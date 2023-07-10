@@ -77,6 +77,28 @@ CREATE TABLE IF NOT EXISTS liste_attente(
 );
 
 
+
+CREATE VIEW V_Programme_Sakafo as select idProgramme, s.idSakafo, dtp.idDetails, s.nom, s.type_ 
+    from programme as p 
+    join detailsProgramme as dtp 
+        on p.idDetails = dtp.idDetails 
+    join relation_dp_sakafo as dp_s
+        on dp_s.idDetails = dtp.idDetails
+    join sakafo as s
+        on s.idSakafo = dp_s.idSakafo
+;
+
+CREATE VIEW V_Programme_Activite as select idProgramme, a.idactivite, dtp.idDetails, a.nom, a.type_ 
+    from programme as p 
+    join detailsProgramme as dtp 
+        on p.idDetails = dtp.idDetails 
+    join relation_dp_activite as dp_a
+        on dp_a.idDetails = dtp.idDetails
+    join activite as a
+        on a.idactivite = dp_a.idactivite
+;
+
+
 INSERT INTO users VALUES (default, 'Rabe', 'rabe@gmail.com', '123', 60, 165);
 INSERT INTO users VALUES (default, 'Rakoto', 'rakoto@gmail.com', '123', 70, 170);
 
@@ -138,24 +160,22 @@ INSERT INTO code VALUES(654128796, 20000, 0);
 INSERT INTO code VALUES(412789630, 10000, 0);
 
 -- 
+select * from programme join detailsProgramme on detailsProgramme.idDetails= programme.idDetails where idUser=1 and programme.debut<now() and programme.fin>now();
+select * from programme join detailsProgramme on detailsProgramme.idDetails= programme.idDetails;
+select * from programme join detailsProgramme on programme.idDetails=detailsProgramme.idDetails where idProgramme=1;
 
+SELECT *
+FROM detailsProgramme
+JOIN programme ON programme.idDetails = detailsProgramme.idDetails
+JOIN relation_dp_sakafo ON relation_dp_sakafo.idDetails = detailsProgramme.idDetails
+JOIN sakafo ON relation_dp_sakafo.idSakafo = sakafo.idSakafo
+where programme.debut<now() and programme.fin>now() and programme.idProgramme=1;
 
-CREATE VIEW V_Programme_Sakafo as select idProgramme, s.idSakafo, dtp.idDetails, s.nom, s.type_ 
-    from programme as p 
-    join detailsProgramme as dtp 
-        on p.idDetails = dtp.idDetails 
-    join relation_dp_sakafo as dp_s
-        on dp_s.idDetails = dtp.idDetails
-    join sakafo as s
-        on s.idSakafo = dp_s.idSakafo
-;
+SELECT *
+FROM detailsProgramme
+JOIN programme ON programme.idDetails = detailsProgramme.idDetails
+JOIN relation_dp_activite ON relation_dp_activite.idDetails = detailsProgramme.idDetails
+JOIN activite ON relation_dp_activite.idActivite = activite.idActivite
+where programme.debut<now() and programme.fin>now() and programme.idProgramme=1;
 
-CREATE VIEW V_Programme_Activite as select idProgramme, a.idactivite, dtp.idDetails, a.nom, a.type_ 
-    from programme as p 
-    join detailsProgramme as dtp 
-        on p.idDetails = dtp.idDetails 
-    join relation_dp_activite as dp_a
-        on dp_a.idDetails = dtp.idDetails
-    join activite as a
-        on a.idactivite = dp_a.idactivite
-;
+update programme set fin='';
