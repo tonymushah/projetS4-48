@@ -24,7 +24,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localshost/GitHub/ProjetS4-48/';
-
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -35,7 +34,7 @@ $config['base_url'] = 'http://localshost/GitHub/ProjetS4-48/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
