@@ -76,7 +76,7 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> 'pgsql:host=localhost;port=5432;dbname=abinci',
 	'hostname' => 'localhost',
-	'username' => 'localhost',
+	'username' => 'postgres',
 	'password' => 'mdpprom15',
 	'database' => 'abinci',
 	'dbdriver' => 'pdo',
