@@ -77,6 +77,28 @@ CREATE TABLE IF NOT EXISTS liste_attente(
 );
 
 
+
+CREATE VIEW V_Programme_Sakafo as select idProgramme, s.idSakafo, dtp.idDetails, s.nom, s.type_ 
+    from programme as p 
+    join detailsProgramme as dtp 
+        on p.idDetails = dtp.idDetails 
+    join relation_dp_sakafo as dp_s
+        on dp_s.idDetails = dtp.idDetails
+    join sakafo as s
+        on s.idSakafo = dp_s.idSakafo
+;
+
+CREATE VIEW V_Programme_Activite as select idProgramme, a.idactivite, dtp.idDetails, a.nom, a.type_ 
+    from programme as p 
+    join detailsProgramme as dtp 
+        on p.idDetails = dtp.idDetails 
+    join relation_dp_activite as dp_a
+        on dp_a.idDetails = dtp.idDetails
+    join activite as a
+        on a.idactivite = dp_a.idactivite
+;
+
+
 INSERT INTO users VALUES (default, 'Rabe', 'rabe@gmail.com', '123', 60, 165);
 INSERT INTO users VALUES (default, 'Rakoto', 'rakoto@gmail.com', '123', 70, 170);
 
@@ -156,4 +178,4 @@ JOIN relation_dp_activite ON relation_dp_activite.idDetails = detailsProgramme.i
 JOIN activite ON relation_dp_activite.idActivite = activite.idActivite
 where programme.debut<now() and programme.fin>now() and programme.idProgramme=1;
 
-update programme set fin=''
+update programme set fin='';
