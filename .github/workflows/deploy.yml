@@ -12,8 +12,8 @@ jobs :
   - name : ssh-connect
     uses : appleboy/ssh-action@v0.1.10
     with : 
-      host : ALWAYS_DATA_SSH_HOST
-      username : ALWAYS_DATA_USER_NAME
-      password : ALWAYS_DATA_SSH_PASSWORD
+      host : {{ secrets.ALWAYS_DATA_SSH_HOST}}
+      username : {{ secrets.ALWAYS_DATA_USER_NAME }}
+      password : {{ secrets.ALWAYS_DATA_SSH_PASSWORD }}
       script: git pull
     
