@@ -75,11 +75,11 @@ $query_builder = TRUE;
 
 $db['db'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'postgres',
-	'password' => '227922',
+	'hostname' => '127.0.0.1',
+	'username' => 'abinci',
+	'password' => 'etu001844',
 	'database' => 'abinci',
-	'dbdriver' => 'pdo',
+	'dbdriver' => 'postgre',
   	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
