@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Admin / Notification</title>
+  <title>Admin / Ajouter activite</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -138,43 +138,41 @@
   </aside><!-- End Sidebar-->
 
   <main id="main" class="main">
+  <section class="section contact">
+    <div class="row gy-4">
+        <div class="col-xl-6">
+            <div class="card p-4">
+            <form action="<?php echo site_url('index.php/Programme/detailsProgramme');?>" method="post">
+                <h1 style="text-align:center">Inserer details programme</h1>
+                <div class="row gy-4">
 
-  <div class="card">
-    <div class="card-body">
-        <h5 class="card-title">Liste des demandes de crédits</h5>
-        <table class="table table-sm">
-        <thead>
-            <tr>
-            <th scope="col">Numero</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Code</th>
-            <th scope="col">montant</th>
-            <th scope="col">status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php for($i = 0;$i<count($list) ; $i++) { ?>
-                <tr>
-                    <th scope="row"><?php echo $list[$i]['idliste'];?></th>
-                    <td><?php echo $list[$i]['nom'];?></td>
-                    <td><?php echo $list[$i]['idcode'];?></td>
-                    <td><?php echo $list[$i]['montant'];?></td>                    
-                    <?php if($list[$i]['validation_'] == 1) { ?>
-                        <td><button type="button" class="btn btn-success">Success</button></td>
-                    <?php } else { ?>
-                        <td>
-                            <a href="<?php echo site_url('index.php/Programme/validate_code_admin/'.$list[$i]['idliste'].'/1');?>"><button type="button" class="btn btn-success"><i class="bi bi-check-circle"></i></button></a>
-                            <a href="<?php echo site_url('index.php/Programme/validate_code_admin/'.$list[$i]['idliste'].'/2');?>"><button type="button" class="btn btn-danger"><i class="bi bi-exclamation-octagon"></i></button></a>
-                        </td>
-                    <?php } ?>
-                </tr>
-            <?php } ?>            
-        </tbody>
-        </table>
-    </div>
+                <div class="col-md-6 ">
+                    <input type="text" class="form-control" name="nom"  placeholder="Nom" required>
+                </div>
+                
+                <div class="col-md-6">
+                    <input type="number" name="duree" class="form-control"  placeholder="Durée" required>
+                </div>
+
+                <div class="col-md-12">
+                    <select class="form-control"  name="type" id="type">
+                        <option value="0">Pour mincir</option>
+                        <option value="1">Pour grandir</option>
+                    </select>
+                </div>
+
+                <div class="col-md-12">
+                    <input type="number" name="prix" class="form-control" placeholder="Prix" required>
+                </div>
+
+                <button type="submit" class="btn btn-success btn-lg">Ajouter</button>
+                </div>
+            </form>
+            </div>
+        </div>
     </div>
 
-
+</section>
   </main>
 
   <footer id="footer" class="footer">
