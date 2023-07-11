@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS programme(
 );
 
 CREATE TABLE IF NOT EXISTS code(
-    idCode primary key,
+    idCode int primary key,
     montant decimal,
     status_ int
 );
@@ -77,8 +77,33 @@ CREATE TABLE IF NOT EXISTS liste_attente(
 );
 
 
+
+CREATE VIEW V_Programme_Sakafo as select idProgramme, s.idSakafo, dtp.idDetails, s.nom, s.type_ 
+    from programme as p 
+    join detailsProgramme as dtp 
+        on p.idDetails = dtp.idDetails 
+    join relation_dp_sakafo as dp_s
+        on dp_s.idDetails = dtp.idDetails
+    join sakafo as s
+        on s.idSakafo = dp_s.idSakafo
+;
+
+CREATE VIEW V_Programme_Activite as select idProgramme, a.idactivite, dtp.idDetails, a.nom, a.type_ 
+    from programme as p 
+    join detailsProgramme as dtp 
+        on p.idDetails = dtp.idDetails 
+    join relation_dp_activite as dp_a
+        on dp_a.idDetails = dtp.idDetails
+    join activite as a
+        on a.idactivite = dp_a.idactivite
+;
+
+
 INSERT INTO users VALUES (default, 'Rabe', 'rabe@gmail.com', '123', 60, 165);
 INSERT INTO users VALUES (default, 'Rakoto', 'rakoto@gmail.com', '123', 70, 170);
+INSERT INTO users VALUES (default, 'Tony', 'tony@gmail.com', '1234', 60, 180);
+INSERT INTO users VALUES (default, 'Teddy', 'teddy@gmail.com', '12345', 60, 175);
+INSERT INTO users VALUES (default, 'Manoa', 'manoa@gmail.com', '123456', 50, 145);
 
 INSERT INTO sakafo VALUES(default, 'assiete legume', 'assiete1.png', 0);
 INSERT INTO sakafo VALUES(default, 'assiete legume', 'assiete2.png', 0);
@@ -95,14 +120,14 @@ INSERT INTO sakafo VALUES(default, 'poulet sauce, riz', 'aliemnt5.png', 1);
 INSERT INTO sakafo VALUES(default, 'flocon avoine', 'aliemnt6.png', 1);
 INSERT INTO sakafo VALUES(default, 'avoine,yaourt, fruit', 'aliemnt7.png', 1);
 
-INSERT INTO activite(default, 'jogging', 'joogin.png', 0);
-INSERT INTO activite(default, 'corde a sauté', 'joogin.png', 0);
-INSERT INTO activite(default, 'cardio', 'cardio.png', 0);
-INSERT INTO activite(default, 'byciclette', 'byciclette.png', 0);
-INSERT INTO activite(default, 'squats', 'squat.png', 1);
-INSERT INTO activite(default, 'fente', 'fente.png', 1);
-INSERT INTO activite(default, 'pecteauraux', 'pecteauraux.png', 1);
-INSERT INTO activite(default, 'biceps', 'biceps.png', 1);
+INSERT INTO activite VALUES (default, 'jogging', 'joogin.png', 0);
+INSERT INTO activite VALUES (default, 'corde a sauté', 'joogin.png', 0);
+INSERT INTO activite VALUES(default, 'cardio', 'cardio.png', 0);
+INSERT INTO activite VALUES(default, 'byciclette', 'byciclette.png', 0);
+INSERT INTO activite VALUES(default, 'squats', 'squat.png', 1);
+INSERT INTO activite VALUES(default, 'fente', 'fente.png', 1);
+INSERT INTO activite VALUES(default, 'pecteauraux', 'pecteauraux.png', 1);
+INSERT INTO activite VALUES(default, 'biceps', 'biceps.png', 1);
 
 INSERT INTO detailsProgramme VALUES(default, 'regime 7j', 7, 0, 10000);
 INSERT INTO detailsProgramme VALUES(default, 'regime 14j', 14, 0, 20000);
@@ -130,9 +155,29 @@ INSERT INTO programme VALUES(default, '2023-07-10', '2023-07-24', 2, 2);
 INSERT INTO programme VALUES(default, '2023-07-17', '2023-07-23', 1, 4);
 INSERT INTO programme VALUES(default, '2023-07-23', '2023-07-30', 2,  1);
 
-INSERT INTO code VALUES(123456789789456, 30000, 0);
-INSERT INTO code VALUES(789456123032147, 40000, 0);
-INSERT INTO code VALUES(963025874102589, 50000, 0);
-INSERT INTO code VALUES(854712036978421, 80000, 0);
-INSERT INTO code VALUES(654128796301478, 20000, 0);
-INSERT INTO code VALUES(412789630257412, 10000, 0);
+INSERT INTO code VALUES(123456789, 30000, 0);
+INSERT INTO code VALUES(789456123, 40000, 0);
+INSERT INTO code VALUES(963025874, 50000, 0);
+INSERT INTO code VALUES(854712036, 80000, 0);
+INSERT INTO code VALUES(654128796, 20000, 0);
+INSERT INTO code VALUES(412789630, 10000, 0);
+
+select * from programme join detailsProgramme on detailsProgramme.idDetails= programme.idDetails where idUser=1 and programme.debut<now() and programme.fin>now();
+select * from programme join detailsProgramme on detailsProgramme.idDetails= programme.idDetails;
+select * from programme join detailsProgramme on programme.idDetails=detailsProgramme.idDetails where idProgramme=1;
+
+SELECT *
+FROM detailsProgramme
+JOIN programme ON programme.idDetails = detailsProgramme.idDetails
+JOIN relation_dp_sakafo ON relation_dp_sakafo.idDetails = detailsProgramme.idDetails
+JOIN sakafo ON relation_dp_sakafo.idSakafo = sakafo.idSakafo
+where programme.debut<now() and programme.fin>now() and programme.idProgramme=1;
+
+SELECT *
+FROM detailsProgramme
+JOIN programme ON programme.idDetails = detailsProgramme.idDetails
+JOIN relation_dp_activite ON relation_dp_activite.idDetails = detailsProgramme.idDetails
+JOIN activite ON relation_dp_activite.idActivite = activite.idActivite
+where programme.debut<now() and programme.fin>now() and programme.idProgramme=1;
+
+update programme set fin='';

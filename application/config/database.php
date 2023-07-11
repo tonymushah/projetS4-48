@@ -70,17 +70,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
-$active_group = 'default';
+$active_group = 'db';
 $query_builder = TRUE;
 
-$db['default'] = array(
-	'dsn'	=> '',
+$db['db'] = array(
+	'dsn'	=> 'pgsql:host=localhost;port=5432;dbname=abinci',
 	'hostname' => 'localhost',
 	'username' => 'postgres',
-	'password' => '227922',
-	'database' => 'projet48',
+	'password' => 'mdpprom15',
+	'database' => 'abinci',
 	'dbdriver' => 'postgre',
-	'dbprefix' => '',
+  	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
