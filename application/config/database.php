@@ -73,7 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'db';
 $query_builder = TRUE;
 
-$db['default'] = array(
+$db['db'] = array(
 	'dsn'	=> 'pgsql:host=localhost;port=5432;dbname=abinci',
 	'hostname' => 'localhost',
 	'username' => 'postgres',

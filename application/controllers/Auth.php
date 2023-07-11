@@ -5,6 +5,7 @@ class Auth extends CI_Controller {
 public function __construct(){
 	parent::__construct();
 	$this->load->database('db');
+	$this->load->Model('User');
 }
 	public function index()
 	{
@@ -25,6 +26,12 @@ public function __construct(){
 	}
 
 	public function accueil($id){
+		$current_prog = $this->User->get_current_program($id);
+        
+        if (count($current_prog) > 0) {
+			$data['current_program']= $current_prog;
+        }
+        $data['user_data']= $this->User->get_user_by_id( $id);
 		$data['user'] = $id;		
 		$this->load->view('frontoffice/accueil',$data);
 	}
@@ -48,7 +55,7 @@ public function __construct(){
 			$this->session->set_flashdata('error_login',$this->input->post());
 		}else{
 			$user = $this->Login_model->getuserbyemail($email);
-			$_SESSION['iduser'] = $user['iduser'];		
+			$_SESSION['user'] = $user['iduser'];		
 			redirect('index.php/Auth/accueil/'.$_SESSION['user']);
 		}
 	}

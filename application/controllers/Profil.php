@@ -16,6 +16,7 @@ class Profil extends CI_Controller {
         }
         
         $data['user_data']= $this->User->get_user_by_id( $iduser);
-        $this->load->view('profil', $data);
+        // $this->load->view('profil', $data);
+        $this->load->view('frontoffice/accueil', $data);
     }
 }
