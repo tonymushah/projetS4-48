@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Users / Profile - NiceUser Bootstrap Template</title>
+  <title>Admin / List activite</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -38,7 +38,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="#" class="logo d-flex align-items-center">
         <img src="<?php echo site_url('assets/img/logo.png');?>" alt="">
-        <span class="d-none d-lg-block">NiceUser</span>
+        <span class="d-none d-lg-block">NiceAdmin</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -82,19 +82,40 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-      <li class="nav-heading">Pages</li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?php echo site_url('index.php/Admin');?>">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-heading">Taches</li>
 
       <li class="nav-item">
-        <a class="nav-link " href="<?php echo site_url('index.php/Auth/accueil/'.$_SESSION['user']);?>">
-          <i class="bi bi-person"></i>
-          <span>Profile</span>
+        <a class="nav-link " href="<?php echo site_url('index.php/Admin/list_person');?>">
+          <i class="bi bi-people"></i>
+          <span>List Person</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo site_url('index.php/Auth/contact');?>">
+        <a class="nav-link collapsed" href="<?php echo site_url('index.php/Admin/notification');?>">
           <i class="bi bi-envelope"></i>
-          <span>Contact</span>
+          <span>Notification</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?php echo site_url('index.php/Admin/list_sakafo');?>">
+          <i class="bi bi-grid-fill"></i>
+          <span>List des sakafo</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?php echo site_url('index.php/Admin/list_activite');?>">
+          <i class="bi bi-award-fill"></i>
+          <span>Lists Activities</span>
         </a>
       </li>
 
@@ -103,30 +124,39 @@
   </aside><!-- End Sidebar-->
 
   <main id="main" class="main">
-
-    <form action="<?php echo site_url('index.php/Programme/code'); ?>" method="post">
-      <div class="center" style="display: flex;justify-content: space-around;">
-        <div class="gauche">
-          <p>Ajouter les codes encore disponibles</p>
-          <p><?php echo isset($erreur) ? $erreur : ''; ?></p>
-          <p><input type="text" name="code" id="code"></p>
-          <p><input type="submit" value="Valider"></p>
-        </div>
-        <div class="droite">
-          <p>Listes des codes presents</p>
-          <p><?php echo isset($erreur) ? $erreur : ''; ?></p>
-          <?php for($i=0;$i<count($code);$i++) { ?>
-            <p><?php echo $code[$i]['idcode'];?></p>
-          <?php } ?>
-        </div>
-      </div>
-    </form>
-
+    <h1>Listes des Activites pour maigrir</h1>
+    <div style="display: flex;flex-wrap: wrap;justify-content: space-around;" class="centre">
+        <?php 
+            for($i=0;$i<count($mahia);$i++) { ?>
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $mahia[$i]['nom']; ?></h5>
+                        </div>
+                        <img src="<?php echo site_url('assets/img/card.jpg');?>" class="card-img-bottom" alt="...">
+                    </div>
+                </div> 
+        <?php } ?> 
+    </div>
+    <h1>Listes des Activites pour grandir</h1>
+    <div style="display: flex;flex-wrap: wrap;justify-content: space-around;" class="centre">
+        <?php 
+            for($i=0;$i<count($matavy);$i++) { ?>
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $matavy[$i]['nom']; ?></h5>
+                        </div>
+                        <img src="<?php echo site_url('assets/img/card.jpg');?>" class="card-img-bottom" alt="...">
+                    </div>
+                </div> 
+        <?php } ?> 
+    </div>  
   </main>
 
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>NiceUser</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
 

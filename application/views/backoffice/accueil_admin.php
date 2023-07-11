@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Users / Profile - NiceAdmin Bootstrap Template</title>
+  <title>Admin / Accueil</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -37,7 +37,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="#" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+        <img src="<?php echo site_url('assets/img/logo.png');?>" alt="">
         <span class="d-none d-lg-block">NiceAdmin</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -83,7 +83,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="index.html">
+        <a class="nav-link collapsed" href="<?php echo site_url('index.php/Admin');?>">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -92,18 +92,32 @@
       <li class="nav-heading">Taches</li>
 
       <li class="nav-item">
-        <a class="nav-link " href="users-profile.html">
-          <i class="bi bi-person"></i>
+        <a class="nav-link " href="<?php echo site_url('index.php/Admin/list_person');?>">
+          <i class="bi bi-people"></i>
           <span>List Person</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
+        <a class="nav-link collapsed" href="<?php echo site_url('index.php/Admin/notification');?>">
           <i class="bi bi-envelope"></i>
           <span>Notification</span>
         </a>
       </li><!-- End Contact Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?php echo site_url('index.php/Admin/list_sakafo');?>">
+          <i class="bi bi-grid-fill"></i>
+          <span>List des sakafo</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?php echo site_url('index.php/Admin/list_activite');?>">
+          <i class="bi bi-award-fill"></i>
+          <span>Lists Activities</span>
+        </a>
+      </li>
 
     </ul>
 
@@ -111,7 +125,7 @@
 
   <main id="main" class="main">
 
-  
+    
 
   </main>
 

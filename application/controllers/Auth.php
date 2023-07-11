@@ -26,7 +26,13 @@ public function __construct(){
 
 	public function accueil($id){
 		$data['user'] = $id;		
+		$this->load->model('Program_model');
+		$data['code'] = $this->Program_model->getallcode();
 		$this->load->view('frontoffice/accueil',$data);
+	}
+
+	public function contact(){
+		$this->load->view('frontoffice/contact');
 	}
 
 	public function upload_image($nom_image){
@@ -48,7 +54,7 @@ public function __construct(){
 			$this->session->set_flashdata('error_login',$this->input->post());
 		}else{
 			$user = $this->Login_model->getuserbyemail($email);
-			$_SESSION['iduser'] = $user['iduser'];		
+			$_SESSION['user'] = $user['iduser'];		
 			redirect('index.php/Auth/accueil/'.$_SESSION['user']);
 		}
 	}

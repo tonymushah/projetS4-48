@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Users / Profile - NiceUser Bootstrap Template</title>
+  <title>Admin / List Person </title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -38,7 +38,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="#" class="logo d-flex align-items-center">
         <img src="<?php echo site_url('assets/img/logo.png');?>" alt="">
-        <span class="d-none d-lg-block">NiceUser</span>
+        <span class="d-none d-lg-block">NiceAdmin</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -82,19 +82,40 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-      <li class="nav-heading">Pages</li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?php echo site_url('index.php/Admin');?>">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-heading">Taches</li>
 
       <li class="nav-item">
-        <a class="nav-link " href="<?php echo site_url('index.php/Auth/accueil/'.$_SESSION['user']);?>">
-          <i class="bi bi-person"></i>
-          <span>Profile</span>
+        <a class="nav-link " href="<?php echo site_url('index.php/Admin/list_person');?>">
+          <i class="bi bi-people"></i>
+          <span>List Person</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="<?php echo site_url('index.php/Auth/contact');?>">
+        <a class="nav-link collapsed" href="<?php echo site_url('index.php/Admin/notification');?>">
           <i class="bi bi-envelope"></i>
-          <span>Contact</span>
+          <span>Notification</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?php echo site_url('index.php/Admin/list_sakafo');?>">
+          <i class="bi bi-grid-fill"></i>
+          <span>List des sakafo</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?php echo site_url('index.php/Admin/list_activite');?>">
+          <i class="bi bi-award-fill"></i>
+          <span>Lists Activities</span>
         </a>
       </li>
 
@@ -104,29 +125,44 @@
 
   <main id="main" class="main">
 
-    <form action="<?php echo site_url('index.php/Programme/code'); ?>" method="post">
-      <div class="center" style="display: flex;justify-content: space-around;">
-        <div class="gauche">
-          <p>Ajouter les codes encore disponibles</p>
-          <p><?php echo isset($erreur) ? $erreur : ''; ?></p>
-          <p><input type="text" name="code" id="code"></p>
-          <p><input type="submit" value="Valider"></p>
-        </div>
-        <div class="droite">
-          <p>Listes des codes presents</p>
-          <p><?php echo isset($erreur) ? $erreur : ''; ?></p>
-          <?php for($i=0;$i<count($code);$i++) { ?>
-            <p><?php echo $code[$i]['idcode'];?></p>
-          <?php } ?>
-        </div>
-      </div>
-    </form>
+            <div class="col-12">
+              <div class="card top-selling overflow-auto">
+                <div class="card-body pb-0">
+                  <h5 class="card-title">All users <span>| actually</span></h5>
+
+                  <table class="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th scope="col">numero</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Poids</th>
+                        <th scope="col">Taille</th>
+                        <th scope="col">Money</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <?php for($i = 0;$i<count($person) ; $i++){ ?>
+                            <tr>
+                                <th scope="row"><a href="#"><img style="border-radius: 5px;max-width: 60px;" src="<?php echo site_url('assets/img/'.$person[$i]['image']);?>" alt=""></a></th>
+                                <td><a href="#" class="text-primary fw-bold"><?php echo $person[$i]['nom'];?></a></td>
+                                <td><?php echo $person[$i]['poids'];?> KG</td>
+                                <td class="fw-bold"><?php echo $person[$i]['taille'];?> cm</td>
+                                <td><?php echo $person[$i]['montant'];?> Ar</td>
+                            </tr>
+                        <?php } ?>                      
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div>
 
   </main>
 
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>NiceUser</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
 
