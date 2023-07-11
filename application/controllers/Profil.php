@@ -28,7 +28,7 @@ class Profil extends CI_Controller
 		if (isset($this->session->user)) {
 			$iduser = $this->session->user;
 			$current_prog = $this->User->get_current_program($iduser);
-			if (count($current_prog) > 0) {
+			if (isset($current_prog)) {
 				redirect("profil");
 			} else {
 				$data["all_programs"] = $this->program->get__all_programs();
@@ -42,7 +42,7 @@ class Profil extends CI_Controller
 		if (isset($this->session->user)) {
 			$iduser = $this->session->user;
 			$current_prog = $this->User->get_current_program($iduser);
-			if (count($current_prog) > 0) {
+			if (isset($current_prog)) {
 				redirect("profil");
 			} else {
 				$iddetail = $this->input->post('program');

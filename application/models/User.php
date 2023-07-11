@@ -10,9 +10,10 @@
         public function get_current_program($id_user){
             $query = "select * from programme join detailsProgramme on detailsProgramme.idDetails= programme.idDetails where idUser=".$id_user." and programme.debut<now() and programme.fin>now()";
             $progDetails = $this->db->query($query);
-            return $progDetails->result_object()[0];
-            $cpr = $progDetails->result_object();
-            return $cpr[0];
+			if(count($progDetails) >= 1){
+				$cpr = $progDetails->result_object();
+            	return $cpr[0];
+			}
         }
 		
 		public function get_current_sakafos($id_user){
