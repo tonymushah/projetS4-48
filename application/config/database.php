@@ -79,7 +79,7 @@ $db['db'] = array(
 	'username' => 'postgres',
 	'password' => 'mdpprom15',
 	'database' => 'abinci',
-	'dbdriver' => 'postgre',
+	'dbdriver' => 'pdo',
   	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
