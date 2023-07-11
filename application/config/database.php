@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
@@ -73,7 +73,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'db';
 $query_builder = TRUE;
 
-$db['db'] = array(
+if (ENVIRONMENT !== "production") {
+	$db['db'] = array(
 	'dsn'	=> '',
 	'hostname' => '127.0.0.1',
 	'username' => 'abinci',
@@ -94,3 +95,25 @@ $db['db'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+}else{
+	$db["db"] = $db['db'] = array(
+		'hostname' => $_ENV["db_host"],
+		'username' => $_ENV["db_username"],
+		'password' => $_ENV["db_password"],
+		'database' => $_ENV["db_name"],
+		'dbdriver' => 'postgre',
+		'dbprefix' => '',
+		'pconnect' => FALSE,
+		'db_debug' => (ENVIRONMENT !== 'production'),
+		'cache_on' => FALSE,
+		'cachedir' => '',
+		'char_set' => 'utf8',
+		'dbcollat' => 'utf8_general_ci',
+		'swap_pre' => '',
+		'encrypt' => FALSE,
+		'compress' => FALSE,
+		'stricton' => FALSE,
+		'failover' => array(),
+		'save_queries' => TRUE
+	);
+}
