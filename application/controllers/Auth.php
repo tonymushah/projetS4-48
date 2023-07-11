@@ -31,19 +31,24 @@ public function __construct(){
 		}
 		$this->load->view('frontoffice/inscription', $data);
 	}
-	public function accueil($id){
+	public function accueil(){
+    $id = $this->session->user;
 		$current_prog = $this->User->get_current_program($id);
-        
         if (count($current_prog) > 0) {
 			$data['current_program']= $current_prog;
         }
-        $data['user_data']= $this->User->get_user_by_id( $id);
+        $data['user_data']= $this->User->get_user_by_id($id);
 		$data['user'] = $id;		
+		$this->load->model('Program_model');
+		$data['code'] = $this->Program_model->getallcode();
 		$this->load->view('frontoffice/accueil',$data);
 	}
 
-	public function upload_image($nom_image)
-	{
+	public function contact(){
+		$this->load->view('frontoffice/contact');
+	}
+
+	public function upload_image($nom_image){
 		$config['upload_path'] = './assets/img/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$this->load->library('upload');
@@ -63,8 +68,8 @@ public function __construct(){
 			$this->session->set_flashdata('error_login', $this->input->post());
 		} else {
 			$user = $this->Login_model->getuserbyemail($email);
-			$_SESSION['iduser'] = $user['iduser'];
-			redirect('index.php/Auth/accueil/' . $_SESSION['user']);
+			$_SESSION['user'] = $user['iduser'];		
+			redirect('index.php/Auth/accueil/');
 		}
 	}
 	public function process_inscription()
