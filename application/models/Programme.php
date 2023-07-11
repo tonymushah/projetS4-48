@@ -59,4 +59,8 @@
 				return $result[0];
 			}
 		}
+		public function get__all_programs(){
+			$query = "select * from detailsProgramme";
+			return $this->db->query($query)->result_object();
+		}
     }
