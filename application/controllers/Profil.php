@@ -43,11 +43,11 @@ class Profil extends CI_Controller
 			$iduser = $this->session->user;
 			$current_prog = $this->User->get_current_program($iduser);
 			if (isset($current_prog)) {
-				redirect("index.php/profil");
+				redirect("index.php/auth");
 			} else {
 				$iddetail = $this->input->post('program');
 				$this->User->set_current_program($iduser, $iddetail);
-				redirect("index.php/profil");
+				redirect("index.php/auth");
 			}
 		} else {
 			redirect("index.php/Auth");

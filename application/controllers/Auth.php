@@ -12,9 +12,9 @@ class Auth extends CI_Controller
 	}
 	public function index()
 	{
-		if(isset($this->session->user)){
+		if (isset($this->session->user)) {
 			redirect("index.php/Auth/accueil");
-		}else{
+		} else {
 			$this->load->view('frontoffice/login');
 		}
 	}
@@ -43,14 +43,14 @@ class Auth extends CI_Controller
 		$id = $this->session->user;
 		if (isset($id)) {
 			$current_prog = $this->User->get_current_program($id);
-      $data = array();
-		
+			$data = array();
+
 			if (isset($current_prog)) {
 				$data['current_program'] = $current_prog;
 			}
 			$user = $this->User->get_user_by_id($id);
-			
-		$data['code'] = $this->Program_model->getallcode();
+
+			$data['code'] = $this->Program_model->getallcode();
 			$data['user_data'] = $user[0];
 			$data['user'] = $id;
 			$this->load->view('frontoffice/accueil', $data);
