@@ -128,22 +128,18 @@ duree_jouridDetails
 
 			</div>
 			<div class="row">
-				<form action="<?=
-								(site_url("profil/validate_program_selection"))
-								?>" method="POST">
+				<form action='<?php echo site_url("index.php/profil/validate_program_selection");?>' method="POST">
 					<div class="form-floating mb-3">
 						<select name="program" class="form-select" id="floatingSelect" aria-label="Floating label select example">
 							<option selected value="-1"></option>Veuillez choisir</option>
 							<?php
-							foreach ($all_programs as $key => $value) {
+								foreach ($all_programs as $key => $value) {
 							?>
-								<option onclick="change_prix_duree(<?=
-																	$value->iddetails
-																	?>)" value="<?= $value->iddetails ?>"><?=
-																											$value->nom
-																											?></option>
+									<option onclick='change_prix_duree(<?php echo $value->iddetails;?>)' value='<?php echo $value->iddetails;?>'>
+										<?php echo $value->nom;?>
+									</option>
 							<?php
-							}
+								}
 							?>
 						</select>
 						<label for="floatingSelect">Selectionnez !</label>
