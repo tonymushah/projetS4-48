@@ -32,7 +32,7 @@ public function __construct(){
 		$this->load->view('frontoffice/inscription', $data);
 	}
 	public function accueil(){
-    $id = $this->session->user;
+    	$id = $_SESSION['user'];
 		$current_prog = $this->User->get_current_program($id);
         if (count($current_prog) > 0) {
 			$data['current_program']= $current_prog;
@@ -69,19 +69,18 @@ public function __construct(){
 		} else {
 			$user = $this->Login_model->getuserbyemail($email);
 			$_SESSION['user'] = $user['iduser'];		
-			redirect('index.php/Auth/accueil/');
+			redirect('index.php/Auth/accueil');
 		}
 	}
 	public function process_inscription()
 	{
-		
-			$nom = $this->input->post('name');
-			$email = $this->input->post('email');
-			$mdp = $this->input->post('password');
-			$weight = $this->input->post('poids');
-			$taille = $this->input->post('taille');
-			$image = $this->upload_image('image');
-			$this->load->model('Login_model');
+		$nom = $this->input->post('name');
+		$email = $this->input->post('email');
+		$mdp = $this->input->post('password');
+		$weight = $this->input->post('poids');
+		$taille = $this->input->post('taille');
+		$image = $this->upload_image('image');
+		$this->load->model('Login_model');
 		try {
 			$verif = $this->Login_model->verif_email($email);
 			if ($verif == null) {

@@ -119,6 +119,20 @@
         </a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?php echo site_url('index.php/Programme/insert_detailsProgramme');?>">
+          <i class="bi bi-award-fill"></i>
+          <span>Inserer details programme</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="<?php echo site_url('index.php/Programme/getallDetailsProgramme');?>">
+          <i class="bi bi-award-fill"></i>
+          <span>Liste details programme</span>
+        </a>
+      </li>
+
     </ul>
 
   </aside><!-- End Sidebar-->
@@ -133,7 +147,7 @@
                   <table class="table table-borderless">
                     <thead>
                       <tr>
-                        <th scope="col">numero</th>
+                        <th scope="col">image</th>
                         <th scope="col">Name</th>
                         <th scope="col">Poids</th>
                         <th scope="col">Taille</th>
