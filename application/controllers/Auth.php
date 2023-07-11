@@ -46,11 +46,13 @@ public function __construct(){
 		}else{
 			redirect("index.php/Auth");
 		}
-		
 	}
 
-	public function upload_image($nom_image)
-	{
+	public function contact(){
+		$this->load->view('frontoffice/contact');
+	}
+
+	public function upload_image($nom_image){
 		$config['upload_path'] = './assets/img/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$this->load->library('upload');
@@ -70,7 +72,7 @@ public function __construct(){
 			$this->session->set_flashdata('error_login', $this->input->post());
 		} else {
 			$user = $this->Login_model->getuserbyemail($email);
-			$_SESSION['user'] = $user['iduser'];
+			$_SESSION['user'] = $user['iduser'];		
 			redirect('index.php/Auth/accueil/');
 		}
 	}
