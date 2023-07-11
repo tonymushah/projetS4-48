@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$config['base_url'] = (ENVIRONMENT !== "production") ? 'http://localhost/GitHub/ProjetS4-48/' : $_ENV["base_url"];
+$config['base_url'] = (ENVIRONMENT !== "production") ? 'http://localhost:8080/' : $_ENV["base_url"];
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -387,7 +387,7 @@ $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_samesite'] = 'Lax';
 $config['sess_expiration'] = 7200;
-$config['sess_save_path'] = (ENVIRONMENT !== "production") ? 'D:\ITU\UwAmp\www\GitHub\projetS4-48\application\session': $_ENV["sess_save_path"];
+$config['sess_save_path'] = (ENVIRONMENT !== "production") ? '/home/tonymushah/Tony_Prog/ProjetS4/application/sessions': $_ENV["sess_save_path"];
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;
