@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Admin / Accueil</title>
+  <title>Admin / List Person </title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -125,7 +125,38 @@
 
   <main id="main" class="main">
 
-    
+            <div class="col-12">
+              <div class="card top-selling overflow-auto">
+                <div class="card-body pb-0">
+                  <h5 class="card-title">All users <span>| actually</span></h5>
+
+                  <table class="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th scope="col">numero</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Poids</th>
+                        <th scope="col">Taille</th>
+                        <th scope="col">Money</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <?php for($i = 0;$i<count($person) ; $i++){ ?>
+                            <tr>
+                                <th scope="row"><a href="#"><img style="border-radius: 5px;max-width: 60px;" src="<?php echo site_url('assets/img/'.$person[$i]['image']);?>" alt=""></a></th>
+                                <td><a href="#" class="text-primary fw-bold"><?php echo $person[$i]['nom'];?></a></td>
+                                <td><?php echo $person[$i]['poids'];?> KG</td>
+                                <td class="fw-bold"><?php echo $person[$i]['taille'];?> cm</td>
+                                <td><?php echo $person[$i]['montant'];?> Ar</td>
+                            </tr>
+                        <?php } ?>                      
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div>
 
   </main>
 

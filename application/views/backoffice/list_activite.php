@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Admin / Accueil</title>
+  <title>Admin / List activite</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -124,9 +124,34 @@
   </aside><!-- End Sidebar-->
 
   <main id="main" class="main">
-
-    
-
+    <h1>Listes des Activites pour maigrir</h1>
+    <div style="display: flex;flex-wrap: wrap;justify-content: space-around;" class="centre">
+        <?php 
+            for($i=0;$i<count($mahia);$i++) { ?>
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $mahia[$i]['nom']; ?></h5>
+                        </div>
+                        <img src="<?php echo site_url('assets/img/card.jpg');?>" class="card-img-bottom" alt="...">
+                    </div>
+                </div> 
+        <?php } ?> 
+    </div>
+    <h1>Listes des Activites pour grandir</h1>
+    <div style="display: flex;flex-wrap: wrap;justify-content: space-around;" class="centre">
+        <?php 
+            for($i=0;$i<count($matavy);$i++) { ?>
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $matavy[$i]['nom']; ?></h5>
+                        </div>
+                        <img src="<?php echo site_url('assets/img/card.jpg');?>" class="card-img-bottom" alt="...">
+                    </div>
+                </div> 
+        <?php } ?> 
+    </div>  
   </main>
 
   <footer id="footer" class="footer">

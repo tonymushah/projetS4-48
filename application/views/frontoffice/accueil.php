@@ -37,7 +37,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="#" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+        <img src="<?php echo site_url('assets/img/logo.png');?>" alt="">
         <span class="d-none d-lg-block">NiceUser</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -85,25 +85,41 @@
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link " href="users-profile.html">
+        <a class="nav-link " href="<?php echo site_url('index.php/Auth/accueil/'.$_SESSION['user']);?>">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
+        <a class="nav-link collapsed" href="<?php echo site_url('index.php/Auth/contact');?>">
           <i class="bi bi-envelope"></i>
           <span>Contact</span>
         </a>
-      </li><!-- End Contact Page Nav -->
+      </li>
 
     </ul>
 
   </aside><!-- End Sidebar-->
 
   <main id="main" class="main">
-
+    <form action="<?php echo site_url('index.php/Programme/code'); ?>" method="post">
+      <div class="center" style="display: flex;justify-content: space-around;">
+        <div class="gauche">
+          <p>Ajouter les codes encore disponibles</p>
+          <p><?php echo isset($erreur) ? $erreur : ''; ?></p>
+          <p><input type="text" name="code" id="code"></p>
+          <p><input type="submit" value="Valider"></p>
+        </div>
+        <div class="droite">
+          <p>Listes des codes presents</p>
+          <p><?php echo isset($erreur) ? $erreur : ''; ?></p>
+          <?php for($i=0;$i<count($code);$i++) { ?>
+            <p><?php echo $code[$i]['idcode'];?></p>
+          <?php } ?>
+        </div>
+      </div>
+    </form>
     <section class="section profile">
         <div class="row">
           <div class="col-xl-4">
@@ -111,7 +127,7 @@
               <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
                 <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                <h2><?php echo $user_data[0]->nom; ?></h2>
+                <h2><?php echo $user_data->nom; ?></h2>
                 
               </div>
             </div>
@@ -143,15 +159,16 @@
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Nom</div>
-                    <div class="col-lg-9 col-md-8"> <?php echo $user_data[0]->nom; ?> </div>
+                    <div class="col-lg-9 col-md-8"> <?php echo $user_data->nom; ?></div>
+                    <div class="col-lg-9 col-md-8"> <?php echo $user_data->nom; ?> </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Poids</div>
-                    <div class="col-lg-9 col-md-8"><?php echo $user_data[0]->poids; ?> </div>
+                    <div class="col-lg-9 col-md-8"><?php echo $user_data->poids; ?> </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Taille</div>
-                    <div class="col-lg-9 col-md-8"> <?php echo $user_data[0]->taille; ?> </div>
+                    <div class="col-lg-9 col-md-8"> <?php echo $user_data->taille; ?> </div>
                   </div>
 
                 </div>
@@ -206,7 +223,6 @@
           </div>
         </div>
     </section>
-
   </main>
 
   <footer id="footer" class="footer">
