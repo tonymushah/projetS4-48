@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Auth extends CI_Controller
-{
-	public function __construct()
-	{
-		parent::__construct();
-		$this->load->database('db');
-	}
-	public function index()
+
+class Auth extends CI_Controller {
+public function __construct(){
+	parent::__construct();
+	$this->load->database('db');
+	$this->load->Model('User');
+}
+  public function index()
 	{
 		$this->load->view('frontoffice/login');
 	}
@@ -31,11 +31,15 @@ class Auth extends CI_Controller
 		}
 		$this->load->view('frontoffice/inscription', $data);
 	}
-
-	public function accueil($id)
-	{
-		$data['user'] = $id;
-		$this->load->view('frontoffice/accueil', $data);
+	public function accueil($id){
+		$current_prog = $this->User->get_current_program($id);
+        
+        if (count($current_prog) > 0) {
+			$data['current_program']= $current_prog;
+        }
+        $data['user_data']= $this->User->get_user_by_id( $id);
+		$data['user'] = $id;		
+		$this->load->view('frontoffice/accueil',$data);
 	}
 
 	public function upload_image($nom_image)
