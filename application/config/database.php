@@ -74,10 +74,10 @@ $active_group = 'db';
 $query_builder = TRUE;
 
 $db['db'] = array(
-	'dsn'	=> 'pgsql:host=localhost;port=5432;dbname=abinci',
+	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'postgres',
-	'password' => 'mdpprom15',
+	'password' => '227922',
 	'database' => 'abinci',
 	'dbdriver' => 'pdo',
   	'dbprefix' => '',
