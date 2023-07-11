@@ -49,14 +49,14 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="<?php echo site_url('assets/img/profile-img.jpg');?>" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+            <img src="<?php echo site_url('assets/img/apple-touch-icon.png');?>" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">Abinci</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
+              <h6>Abinci</h6>
+              <span>Site Web</span>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -124,7 +124,7 @@
   </aside><!-- End Sidebar-->
 
   <main id="main" class="main">
-    <h1>Listes des Aliments pour maigrir</h1>
+    <span style="display: flex;flex-wrap: wrap;justify-content: space-between;"><h1>Listes des Aliments pour maigrir</h1><span><a href="<?php echo site_url('index.php/Programme/Ajoutsakafo');?>"><button type="button" class="btn btn-success btn-lg">Ajouter</button></a></span></span>
     <div style="display: flex;flex-wrap: wrap;justify-content: space-around;" class="centre">
         <?php 
             for($i=0;$i<count($mahia);$i++) { ?>
