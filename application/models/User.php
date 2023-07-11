@@ -10,6 +10,7 @@
         public function get_current_program($id_user){
             $query = "select * from programme join detailsProgramme on detailsProgramme.idDetails= programme.idDetails where idUser=".$id_user." and programme.debut<now() and programme.fin>now()";
             $progDetails = $this->db->query($query);
+
 			$cpr = $progDetails->result_object();
 			if(count($cpr) >= 1){
             	return $cpr[0];
@@ -42,8 +43,7 @@
 		public function set_current_program($id_user, $id_detail_program){
 			$this->load->model("Programme", "program");
 			$current = $this->get_current_program($id_user);
-			if(is_array($current)){
-				if(count($current) >= 1){
+			if(isset($current)){
 					throw new ErrorException("The user already have an ongoing another program");
 				}else{
 					$dtp = $this->program->get__detail_programm_by_id($id_detail_program);
@@ -53,6 +53,6 @@
 						return $this->get_current_program($id_user);
 					}
 				}
-			}
+			
 		}
     }

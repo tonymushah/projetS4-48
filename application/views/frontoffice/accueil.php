@@ -32,76 +32,52 @@
 
 <body>
 
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="#" class="logo d-flex align-items-center">
+        <img src="<?php echo site_url('assets/img/logo.png');?>" alt="">
+        <span class="d-none d-lg-block">NiceUser</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="<?php echo site_url('assets/img/profile-img.jpg');?>" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Kevin Anderson</h6>
+              <span>Web Designer</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="<?php echo site_url('index.php/Auth/logout');?>">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
 	<!-- ======= Header ======= -->
-	<header id="header" class="header fixed-top d-flex align-items-center">
-
-		<div class="d-flex align-items-center justify-content-between">
-			<a href="#" class="logo d-flex align-items-center">
-				<img src="<?php echo site_url('assets/img/logo.png'); ?>" alt="">
-				<span class="d-none d-lg-block">NiceUser</span>
-			</a>
-			<i class="bi bi-list toggle-sidebar-btn"></i>
-		</div><!-- End Logo -->
-
-		<nav class="header-nav ms-auto">
-			<ul class="d-flex align-items-center">
-
-				<li class="nav-item dropdown pe-3">
-
-					<a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-						<img src="<?php echo site_url('assets/img/apple-touch-icon.png'); ?>" alt="Profile" class="rounded-circle">
-						<span class="d-none d-md-block dropdown-toggle ps-2">Abinci</span>
-					</a><!-- End Profile Iamge Icon -->
-
-					<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-						<li class="dropdown-header">
-							<h6>Abinci</h6>
-							<span>Site Web</span>
-						</li>
-						<li>
-							<hr class="dropdown-divider">
-						</li>
-
-						<li>
-							<a class="dropdown-item d-flex align-items-center" href="<?php echo site_url('index.php/Auth/logout'); ?>">
-								<i class="bi bi-box-arrow-right"></i>
-								<span>Sign Out</span>
-							</a>
-						</li>
-
-					</ul><!-- End Profile Dropdown Items -->
-				</li><!-- End Profile Nav -->
-
-			</ul>
-		</nav><!-- End Icons Navigation -->
-
-	</header><!-- End Header -->
-
-	<!-- ======= Sidebar ======= -->
-	<aside id="sidebar" class="sidebar">
-
-		<ul class="sidebar-nav" id="sidebar-nav">
-
-			<li class="nav-heading">Pages</li>
-
-			<li class="nav-item">
-				<a class="nav-link " href="<?php echo site_url('index.php/Auth/accueil/'); ?>">
-					<i class="bi bi-person"></i>
-					<span>Profile</span>
-				</a>
-			</li>
-
-			<li class="nav-item">
-				<a class="nav-link collapsed" href="<?php echo site_url('index.php/Auth/contact'); ?>">
-					<i class="bi bi-envelope"></i>
-					<span>Contact</span>
-				</a>
-			</li>
-
-		</ul>
-
-	</aside><!-- End Sidebar-->
-
 	<main id="main" class="main">
 		<section class="section profile">
 			<div class="row">
@@ -166,11 +142,37 @@
 									<p>activite</p>
 
 								</div>
-
+                    
 								<div class="tab-pane fade pt-3" id="profile-change-password">
 									<!-- Change Password Form -->
 									<form>
+                     <?php if(isset($current_program)){
 
+                  }else{
+                    ?>
+                      <div class="card-body">
+
+                    <a type="button" href="<?php echo base_url("index.php/Profil/select_program"); ?>" class="btn btn-primary">Selectionner un programme</a>
+                  </div>
+                    <?php
+                  } ?>
+                <div class="tab-pane fade pt-3" id="profile-change-password">
+                  <!-- Change Password Form -->
+                  <form>
+
+                    <div class="row mb-3">
+                      <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="password" type="password" class="form-control" id="currentPassword">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="newpassword" type="password" class="form-control" id="newPassword">
+                      </div>
+                    </div>
 										<div class="row mb-3">
 											<label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
 											<div class="col-md-8 col-lg-9">

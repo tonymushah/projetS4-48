@@ -12,7 +12,11 @@ class Auth extends CI_Controller
 	}
 	public function index()
 	{
-		$this->load->view('frontoffice/login');
+		if(isset($this->session->user)){
+			redirect("index.php/Auth/accueil");
+		}else{
+			$this->load->view('frontoffice/login');
+		}
 	}
 	public function error_login()
 	{
@@ -39,7 +43,8 @@ class Auth extends CI_Controller
 		$id = $this->session->user;
 		if (isset($id)) {
 			$current_prog = $this->User->get_current_program($id);
-
+      $data = array();
+		
 			if (isset($current_prog)) {
 				$data['current_program'] = $current_prog;
 			}
