@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/GitHub/ProjetS4-48/';
+$config['base_url'] = 'http://localhost/projet/ProjetS4-48/';
 /*
 |--------------------------------------------------------------------------
 | Index File
