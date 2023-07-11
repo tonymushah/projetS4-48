@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Admin / Notification</title>
+  <title>Admin / List Person </title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -139,41 +139,35 @@
 
   <main id="main" class="main">
 
-  <div class="card">
-    <div class="card-body">
-        <h5 class="card-title">Liste des demandes de crédits</h5>
-        <table class="table table-sm">
-        <thead>
-            <tr>
-            <th scope="col">Numero</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Code</th>
-            <th scope="col">montant</th>
-            <th scope="col">status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php for($i = 0;$i<count($list) ; $i++) { ?>
-                <tr>
-                    <th scope="row"><?php echo $list[$i]['idliste'];?></th>
-                    <td><?php echo $list[$i]['nom'];?></td>
-                    <td><?php echo $list[$i]['idcode'];?></td>
-                    <td><?php echo $list[$i]['montant'];?></td>                    
-                    <?php if($list[$i]['validation_'] == 1) { ?>
-                        <td><button type="button" class="btn btn-success">Success</button></td>
-                    <?php } else { ?>
-                        <td>
-                            <a href="<?php echo site_url('index.php/Programme/validate_code_admin/'.$list[$i]['idliste'].'/1');?>"><button type="button" class="btn btn-success"><i class="bi bi-check-circle"></i></button></a>
-                            <a href="<?php echo site_url('index.php/Programme/validate_code_admin/'.$list[$i]['idliste'].'/2');?>"><button type="button" class="btn btn-danger"><i class="bi bi-exclamation-octagon"></i></button></a>
-                        </td>
-                    <?php } ?>
-                </tr>
-            <?php } ?>            
-        </tbody>
-        </table>
-    </div>
-    </div>
+            <div class="col-12">
+              <div class="card top-selling overflow-auto">
+                <div class="card-body pb-0">
+                  <h5 class="card-title">All Details <span>| actually</span></h5>
 
+                  <table class="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Durée en jour</th>
+                        <th scope="col">Prix</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <?php for($i = 0;$i<count($detail) ; $i++){ ?>
+                            <tr>
+                                <td><?php echo $detail[$i]['nom'];?></td>
+                                <td><?php echo $detail[$i]['duree_jour'];?> jours</td>
+                                <td class="fw-bold"><?php echo $detail[$i]['prix'];?> Ar</td>
+                                <td><a href="<?php echo site_url('index.php/Programme/modiferDetails/'.$detail[$i]['iddetails']) ?>"><button type="button" class="btn btn-success rounded-pill">Modifier</button></a></td>
+                            </tr>
+                        <?php } ?>                      
+                    </tbody>
+                  </table>
+
+                </div>
+
+              </div>
+            </div>
 
   </main>
 

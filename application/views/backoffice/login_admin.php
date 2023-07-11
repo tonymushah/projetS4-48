@@ -53,7 +53,7 @@
                   <div class="pt-4 pb-2">
                     <h5 class="card-title text-center pb-0 fs-4">Login to Admin</h5>
                     <p class="text-center small">Enter Admin username & password to login</p>
-                  </div>
+									</div>
 
                   <form action="<?php echo site_url('index.php/Auth/process_login_admin');?>" method="post" class="row g-3 needs-validation" novalidate>
                     <?php if(isset($errorl)) { ?>
@@ -79,7 +79,7 @@
                       <button class="btn btn-primary w-100" type="submit">Login</button>
                     </div>
                   </form>
-
+									<p clas="text-center small">For frontoffice login, please click <a href="<?= base_url("index.php/Auth")?>">here</a></p>
                 </div>
               </div>
 

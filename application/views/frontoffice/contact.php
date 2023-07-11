@@ -144,22 +144,22 @@
             <div class="col-lg-6">
               <div class="info-box card">
                 <i class="bi bi-person"></i>
-                <h3>ETU-XXXX</h3>
-                <p>person</p>
+                <h3>ETU-1779</h3>
+                <p>Teddy</p>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="info-box card">
                 <i class="bi bi-person"></i>
-                <h3>ETU-XXXX</h3>
-                <p>person</p>
+                <h3>ETU-2041</h3>
+                <p>Manoa</p>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="info-box card">
                 <i class="bi bi-person"></i>
-                <h3>ETU-XXXX</h3>
-                <p>person</p>
+                <h3>ETU-1844</h3>
+                <p>Tony</p>
               </div>
             </div>
           </div>        

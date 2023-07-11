@@ -69,7 +69,6 @@
                         <div class="invalid-feedback">Please enter your username.</div>
                       </div>
                     </div>
-
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
                       <input type="password" name="password" class="form-control" id="yourPassword" value="<?php echo isset($formdata) ? $formdata['password'] : ''; ?>" required>
@@ -81,11 +80,12 @@
                     <div class="col-12">
                       <p class="small mb-0">Don't have account? <a href="<?php echo site_url('index.php/Auth/inscription');?>">Create an account</a></p>
                     </div>
+										<div class="col-12">
+											<p clas="text-center small text-info">For backoffice login, please click <a href="<?= base_url("index.php/Auth/login_admin")?>">here</a></p>
+										</div>
                   </form>
-
                 </div>
               </div>
-
             </div>
           </div>
         </div>
