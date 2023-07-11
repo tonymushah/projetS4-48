@@ -80,7 +80,7 @@ $db['db'] = array(
 	'password' => '227922',
 	'database' => 'abinci',
 	'dbdriver' => 'postgre',
-	'dbprefix' => '',
+  	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
