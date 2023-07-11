@@ -12,4 +12,8 @@ class Test extends CI_Controller {
         $function= $this->User->get_user_by_id($iduser);
         var_dump($function);
     }
+	public function get__all_programs(){
+		$this->load->model("Programme", "program");
+		var_dump($this->program->get__all_programs());
+	}
 }

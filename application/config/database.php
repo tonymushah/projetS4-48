@@ -79,7 +79,7 @@ $db['db'] = array(
 	'password' => 'etu001844',
 	'database' => 'abinci',
 	'dbdriver' => 'postgre',
-  'dbprefix' => '',
+  	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
