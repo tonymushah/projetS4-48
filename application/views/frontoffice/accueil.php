@@ -111,7 +111,7 @@
               <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
                 <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                <h2><?php echo $user_data[0]->nom; ?></h2>
+                <h2><?php echo $user_data->nom; ?></h2>
                 
               </div>
             </div>
@@ -143,15 +143,15 @@
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Nom</div>
-                    <div class="col-lg-9 col-md-8"> <?php echo $user_data[0]->nom; ?> </div>
+                    <div class="col-lg-9 col-md-8"> <?php echo $user_data->nom; ?>< </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Poids</div>
-                    <div class="col-lg-9 col-md-8"><?php echo $user_data[0]->poids; ?> </div>
+                    <div class="col-lg-9 col-md-8"><?php echo $user_data->poids; ?> </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Taille</div>
-                    <div class="col-lg-9 col-md-8"> <?php echo $user_data[0]->taille; ?> </div>
+                    <div class="col-lg-9 col-md-8"> <?php echo $user_data->taille; ?> </div>
                   </div>
 
                 </div>
