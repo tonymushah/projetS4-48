@@ -44,4 +44,23 @@
             $this->db->query($query);
             return $query;
         }
+		public function get__sakafo($idProgramme){
+			$query = sprintf("select * from v_programme_sakafo where idprogramme=%d", $idProgramme);
+			return $this->db->query($query)->result_object();
+		}
+		public function get__activite($idProgramme){
+			$query = sprintf("select * from V_Programme_Activite where idProgramme=%d", $idProgramme);
+			return $this->db->query($query)->result_object();
+		}
+		public function get__detail_programm_by_id($id_detail_program){
+			$query = sprintf("select * from detailsProgramme where idDetails=%d", $id_detail_program);
+			$result = $this->db->query($query)->result_object();
+			if(count($result) == 1){
+				return $result[0];
+			}
+		}
+		public function get__all_programs(){
+			$query = "select * from detailsProgramme";
+			return $this->db->query($query)->result_object();
+		}
     }
