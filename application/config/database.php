@@ -80,7 +80,7 @@ $db['db'] = array(
 	'password' => 'mdpprom15',
 	'database' => 'abinci',
 	'dbdriver' => 'postgre',
-  'dbprefix' => '',
+  	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,

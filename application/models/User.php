@@ -10,9 +10,26 @@
         public function get_current_program($id_user){
             $query = "select * from programme join detailsProgramme on detailsProgramme.idDetails= programme.idDetails where idUser=".$id_user." and programme.debut<now() and programme.fin>now()";
             $progDetails = $this->db->query($query);
-            return $progDetails->result_object();
+            return $progDetails->result_object()[0];
         }
-
+		
+		public function get_current_sakafos($id_user){
+			$prog = $this->get_current_program($id_user);
+			$query = sprintf("select * from v_programme_sakafo where idprogramme=%d", $prog->idprogramme);
+			$data = new stdClass();
+			$data->prog = $prog;
+			$data->result = $this->db->query($query)->result_object();
+			return $data;
+		}
+		
+		public function get_current_activite($id_user){
+			$prog = $this->get_current_program($id_user);
+			$query = sprintf("select * from v_programme_activite where idprogramme=%d", $prog->idprogramme);
+			$data = new stdClass();
+			$data->prog = $prog;
+			$data->result = $this->db->query($query)->result_object();
+			return $data;
+		}
         public function get_user_by_id($id_user){
             $query = "select * from users where idUser=".$id_user." ";
             $user = $this->db->query($query);
