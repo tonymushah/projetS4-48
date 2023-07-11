@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Admin / Accueil</title>
+  <title>Admin / Ajouter activite</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -124,9 +124,36 @@
   </aside><!-- End Sidebar-->
 
   <main id="main" class="main">
+  <section class="section contact">
+    <div class="row gy-4">
+        <div class="col-xl-6">
+            <div class="card p-4">
+            <form action="<?php echo site_url('index.php/Programme/insert_activity');?>" method="post" enctype="multipart/form-data" >
+                <h1 style="text-align:center">Ajouter un Activite</h1>
+                <div class="row gy-4">
 
+                <div class="col-md-6 ">
+                    <input type="text" class="form-control" name="nom" placeholder="Activity name" required>
+                </div>
+                
+                <div class="col-md-6">
+                    <input type="file" name="image" class="form-control" placeholder="Activity picture" required>
+                </div>
 
+                <div class="col-md-12">
+                    <select class="form-control" name="type" id="type">
+                        <option value="0">Pour mincir</option>
+                        <option value="1">Pour grandir</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg">Ajouter</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
 
+</section>
   </main>
 
   <footer id="footer" class="footer">

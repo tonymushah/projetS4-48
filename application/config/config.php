@@ -23,6 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+
 $config['base_url'] = (ENVIRONMENT !== "production") ? 'http://localhost/GitHub/ProjetS4-48/' : $_ENV["base_url"];
 /*
 |--------------------------------------------------------------------------

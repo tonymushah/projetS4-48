@@ -75,25 +75,26 @@ $query_builder = TRUE;
 
 if (ENVIRONMENT !== "production") {
 	$db['db'] = array(
-		'hostname' => 'localhost',
-		'username' => 'postgres',
-		'password' => 'mdpprom15',
-		'database' => 'abinci',
-		'dbdriver' => 'postgre',
-		'dbprefix' => '',
-		'pconnect' => FALSE,
-		'db_debug' => (ENVIRONMENT !== 'production'),
-		'cache_on' => FALSE,
-		'cachedir' => '',
-		'char_set' => 'utf8',
-		'dbcollat' => 'utf8_general_ci',
-		'swap_pre' => '',
-		'encrypt' => FALSE,
-		'compress' => FALSE,
-		'stricton' => FALSE,
-		'failover' => array(),
-		'save_queries' => TRUE
-	);
+	'dsn'	=> '',
+	'hostname' => '127.0.0.1',
+	'username' => 'abinci',
+	'password' => 'etu001844',
+	'database' => 'abinci',
+	'dbdriver' => 'postgre',
+  	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
 }else{
 	$db["db"] = $db['db'] = array(
 		'hostname' => $_ENV["db_host"],
