@@ -35,6 +35,7 @@ class Auth extends CI_Controller
 	}
 	public function accueil()
 	{
+		$this->load->model('Program_model');
 		$id = $this->session->user;
 		if (isset($id)) {
 			$current_prog = $this->User->get_current_program($id);
@@ -43,6 +44,8 @@ class Auth extends CI_Controller
 				$data['current_program'] = $current_prog;
 			}
 			$user = $this->User->get_user_by_id($id);
+			
+		$data['code'] = $this->Program_model->getallcode();
 			$data['user_data'] = $user[0];
 			$data['user'] = $id;
 			$this->load->view('frontoffice/accueil', $data);
@@ -96,7 +99,7 @@ class Auth extends CI_Controller
 			if ($verif == null) {
 				$iduser = $this->Login_model->insert_person($nom, $email, $mdp, $weight, $taille, $image['file_name']);
 				$this->session->set_userdata('user', $iduser);
-				redirect('index.php/Auth/accueil/' . $_SESSION['user']);
+				redirect('index.php/Auth/accueil/');
 			} else {
 				$this->session->set_flashdata('error_sign', $this->input->post());
 				redirect('index.php/Auth/error_sign');
