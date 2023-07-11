@@ -16,4 +16,14 @@ class Test extends CI_Controller {
 		$this->load->model("Programme", "program");
 		var_dump($this->program->get__all_programs());
 	}
+	public function get_current_sakafos(){
+		$this->load->Model('User', "user");
+		$iduser = 2;
+		var_dump($this->user->get_current_sakafos($iduser));
+	}
+	public function get_current_activite(){
+		$this->load->Model('User', "user");
+		$iduser = 2;
+		var_dump($this->user->get_current_activite($iduser));
+	}
 }
