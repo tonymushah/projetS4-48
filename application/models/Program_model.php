@@ -161,4 +161,48 @@ class Program_model extends CI_Model {
         $this->db->query($sql);
     }
 
+    public function insert_detailProgramme($nom, $duree, $type, $prix){
+        $query = "INSERT INTO detailsProgramme VALUES (default,'%s','%s','%s','%s')";
+        $query = sprintf($query, $nom, $duree, $type, $prix);
+        $this->db->query($query);
+    }
+
+    public function getallDetailsProgramme(){
+        $query = "select * from detailsProgramme";
+        $query = $this->db->query($query);
+        $tab = array();
+        $i= 0;
+        foreach($query->result_array() as $row){
+            $tab[$i]['iddetails'] = $row['iddetails'];
+            $tab[$i]['nom'] = $row['nom'];
+            $tab[$i]['duree_jour'] = $row['duree_jour'];
+            $tab[$i]['type_'] = $row['type_'];
+            $tab[$i]['prix'] = $row['prix'];
+            $i++;
+        }
+        return $tab;
+    }
+
+    public function get_detailsProgrammeById($id){
+        $query = "select * from detailsProgramme where iddetails= ".$id;
+        $query = $this->db->query($query);
+        $tab = array();
+        $i= 0;
+        foreach($query->result_array() as $row){
+            $tab['iddetails'] = $row['iddetails'];
+            $tab['nom'] = $row['nom'];
+            $tab['duree_jour'] = $row['duree_jour'];
+            $tab['type_'] = $row['type_'];
+            $tab['prix'] = $row['prix'];
+            $i++;
+        }
+        return $tab;
+    }
+
+    public function update_detailsProgram($nom,$duree,$type,$prix,$id){
+        $sql = "UPDATE detailsprogramme SET nom='%s',duree_jour='%s',type_='%s',prix = '%s' WHERE iddetails = '%s'";
+        $sql = sprintf($sql,$nom,$duree,$type,$prix,$id);
+        $this->db->query($sql);
+    }
+
 }

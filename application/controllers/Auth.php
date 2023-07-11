@@ -39,7 +39,7 @@ class Auth extends CI_Controller
 	}
 	public function accueil()
 	{
-		$this->load->model('Program_model');
+    $this->load->model('Program_model');
 		$id = $this->session->user;
 		if (isset($id)) {
 			$current_prog = $this->User->get_current_program($id);
@@ -85,13 +85,12 @@ class Auth extends CI_Controller
 			$this->session->set_flashdata('error_login', $this->input->post());
 		} else {
 			$user = $this->Login_model->getuserbyemail($email);
-			$_SESSION['user'] = $user['iduser'];
-			redirect('index.php/Auth/accueil/');
-		}
+      $_SESSION['user'] = $user['iduser'];		
+			redirect('index.php/Auth/accueil');
+    }
 	}
 	public function process_inscription()
 	{
-
 		$nom = $this->input->post('name');
 		$email = $this->input->post('email');
 		$mdp = $this->input->post('password');
