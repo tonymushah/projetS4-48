@@ -75,7 +75,6 @@ $query_builder = TRUE;
 
 if (ENVIRONMENT !== "production") {
 	$db['db'] = array(
-		'dsn'	=> 'pgsql:host=localhost;port=5432;dbname=abinci',
 		'hostname' => 'localhost',
 		'username' => 'postgres',
 		'password' => 'mdpprom15',
