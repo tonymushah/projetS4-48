@@ -10,7 +10,11 @@ public function __construct(){
 }
   public function index()
 	{
-		$this->load->view('frontoffice/login');
+		if(isset($this->session->user)){
+			redirect("index.php/Auth/accueil");
+		}else{
+			$this->load->view('frontoffice/login');
+		}
 	}
 	public function error_login()
 	{
@@ -35,8 +39,8 @@ public function __construct(){
 		$id = $this->session->user;
 		if(isset($id)){
 			$current_prog = $this->User->get_current_program($id);
-        
-        if (count($current_prog) > 0) {
+        $data = array();
+		if (isset($current_prog)) {
 			$data['current_program']= $current_prog;
         }
 		$user = $this->User->get_user_by_id($id);

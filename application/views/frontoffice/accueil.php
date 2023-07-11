@@ -171,6 +171,8 @@
                     <div class="col-lg-9 col-md-8"> <?php echo $user_data->taille; ?> </div>
                   </div>
 
+                  
+
                 </div>
 
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
@@ -183,7 +185,16 @@
                   <p>activite</p>
 
                 </div>
+                  <?php if(isset($current_program)){
 
+                  }else{
+                    ?>
+                      <div class="card-body">
+
+                    <a type="button" href="<?php echo base_url("index.php/Profil/select_program"); ?>" class="btn btn-primary">Selectionner un programme</a>
+                  </div>
+                    <?php
+                  } ?>
                 <div class="tab-pane fade pt-3" id="profile-change-password">
                   <!-- Change Password Form -->
                   <form>
