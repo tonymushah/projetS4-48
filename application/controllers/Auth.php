@@ -2,13 +2,15 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class Auth extends CI_Controller {
-public function __construct(){
-	parent::__construct();
-	$this->load->database('db');
-	$this->load->Model('User');
-}
-  public function index()
+class Auth extends CI_Controller
+{
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->database('db');
+		$this->load->Model('User');
+	}
+	public function index()
 	{
 		if(isset($this->session->user)){
 			redirect("index.php/Auth/accueil");
@@ -30,33 +32,40 @@ public function __construct(){
 	{
 		$data['errors'] = 'use an another email';
 		$data['formdata'] = $this->session->flashdata('error_sign');
-		if($this->session->flashdata("throwable") !== null){
+		if ($this->session->flashdata("throwable") !== null) {
 			$data["throwable"] = $this->session->flashdata("throwable");
 		}
 		$this->load->view('frontoffice/inscription', $data);
 	}
-	public function accueil(){
+	public function accueil()
+	{
+		$this->load->model('Program_model');
 		$id = $this->session->user;
-		if(isset($id)){
+		if (isset($id)) {
 			$current_prog = $this->User->get_current_program($id);
-        $data = array();
-		if (isset($current_prog)) {
-			$data['current_program']= $current_prog;
-        }
-		$user = $this->User->get_user_by_id($id);
-        $data['user_data']= $user[0];
-		$data['user'] = $id;		
-		$this->load->view('frontoffice/accueil', $data);
-		}else{
+      $data = array();
+		
+			if (isset($current_prog)) {
+				$data['current_program'] = $current_prog;
+			}
+			$user = $this->User->get_user_by_id($id);
+			
+		$data['code'] = $this->Program_model->getallcode();
+			$data['user_data'] = $user[0];
+			$data['user'] = $id;
+			$this->load->view('frontoffice/accueil', $data);
+		} else {
 			redirect("index.php/Auth");
 		}
 	}
 
-	public function contact(){
+	public function contact()
+	{
 		$this->load->view('frontoffice/contact');
 	}
 
-	public function upload_image($nom_image){
+	public function upload_image($nom_image)
+	{
 		$config['upload_path'] = './assets/img/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$this->load->library('upload');
@@ -76,26 +85,26 @@ public function __construct(){
 			$this->session->set_flashdata('error_login', $this->input->post());
 		} else {
 			$user = $this->Login_model->getuserbyemail($email);
-			$_SESSION['user'] = $user['iduser'];		
+			$_SESSION['user'] = $user['iduser'];
 			redirect('index.php/Auth/accueil/');
 		}
 	}
 	public function process_inscription()
 	{
-		
-			$nom = $this->input->post('name');
-			$email = $this->input->post('email');
-			$mdp = $this->input->post('password');
-			$weight = $this->input->post('poids');
-			$taille = $this->input->post('taille');
-			$image = $this->upload_image('image');
-			$this->load->model('Login_model');
+
+		$nom = $this->input->post('name');
+		$email = $this->input->post('email');
+		$mdp = $this->input->post('password');
+		$weight = $this->input->post('poids');
+		$taille = $this->input->post('taille');
+		$image = $this->upload_image('image');
+		$this->load->model('Login_model');
 		try {
 			$verif = $this->Login_model->verif_email($email);
 			if ($verif == null) {
 				$iduser = $this->Login_model->insert_person($nom, $email, $mdp, $weight, $taille, $image['file_name']);
 				$this->session->set_userdata('user', $iduser);
-				redirect('index.php/Auth/accueil/' . $_SESSION['user']);
+				redirect('index.php/Auth/accueil/');
 			} else {
 				$this->session->set_flashdata('error_sign', $this->input->post());
 				redirect('index.php/Auth/error_sign');
